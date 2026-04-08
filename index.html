@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30 Jours pour Oser Aimer — Les Cœurs Solitaires</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bai+Jamjuree:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --violet: #9B59B6;
+  --fuchsia: #E91E8C;
+  --turquoise: #00BCD4;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --bg: #ede0f5;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  font-family: 'Bai Jamjuree', sans-serif;
+  color: #2d1a40;
+  overflow-x: hidden;
+}
+
+/* ── ÉTOILES ───────────────────────────── */
+.stars { position:fixed; inset:0; pointer-events:none; z-index:0; }
+.star {
+  position:absolute; background:#b084d4; border-radius:50%;
+  animation: tw var(--d,3s) ease-in-out infinite var(--dl,0s);
+}
+@keyframes tw { 0%,100%{opacity:var(--op,.5)} 50%{opacity:.05} }
+
+/* ── HERO ──────────────────────────────── */
+.hero {
+  position:relative; z-index:1;
+  text-align:center;
+  padding: 4.5rem 1.5rem 3.5rem;
+  border-bottom: 1px solid rgba(155,89,182,.25);
+}
+.brand {
+  font-size:.7rem; letter-spacing:.38em; text-transform:uppercase;
+  color:#6a2d8f; font-weight:500; margin-bottom:1.2rem;
+}
+.gold-bar {
+  width:60px; height:1px; margin:0 auto 1.4rem;
+  background:linear-gradient(90deg,transparent,#9B59B6,transparent);
+}
+.hero h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,5.5vw,3.5rem);
+  font-weight:300; line-height:1.15;
+  color:#2d1a40;
+  text-shadow: none;
+}
+.hero h1 em {
+  font-style:italic;
+  background:linear-gradient(135deg,var(--gold-light),var(--fuchsia) 55%,var(--violet));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.hero-sub {
+  margin-top:.7rem; font-size:.82rem; color:rgba(60,20,80,.6); letter-spacing:.08em;
+}
+
+/* ── DIPLÔME ───────────────────────────── */
+.section-diplome {
+  position:relative; z-index:1;
+  max-width:760px; margin:4rem auto;
+  padding:0 1.5rem;
+}
+
+.diplome {
+  background: linear-gradient(160deg,#d4b8e8 0%,#c9a8e0 45%,#dbbfec 100%);
+  border: 2px solid rgba(155,89,182,.55);
+  border-radius:4px;
+  padding:3.5rem 2.8rem;
+  position:relative;
+  box-shadow:
+    0 0 70px rgba(155,89,182,.2),
+    0 0 130px rgba(233,30,140,.1),
+    inset 0 0 80px rgba(0,0,0,.25);
+}
+
+/* Bordure intérieure */
+.diplome::after {
+  content:''; position:absolute; inset:10px;
+  border:1px solid rgba(155,89,182,.2); border-radius:2px; pointer-events:none;
+}
+
+.corner {
+  position:absolute; width:50px; height:50px;
+  border-color:#9B59B6; border-style:solid; opacity:.7;
+}
+.c-tl{top:16px;left:16px;border-width:2px 0 0 2px}
+.c-tr{top:16px;right:16px;border-width:2px 2px 0 0}
+.c-bl{bottom:16px;left:16px;border-width:0 0 2px 2px}
+.c-br{bottom:16px;right:16px;border-width:0 2px 2px 0}
+
+.dip-header { text-align:center; margin-bottom:2.2rem; }
+
+.dip-brand {
+  font-size:.68rem; letter-spacing:.35em; text-transform:uppercase;
+  color:#4a1a6e; margin-bottom:1.1rem;
+}
+
+.hearts { display:flex; justify-content:center; gap:.9rem; margin:.9rem 0; }
+.heart { font-size:1.2rem; animation:pulse 2.5s ease-in-out infinite; }
+.heart:nth-child(2) { font-size:1.5rem; animation-delay:.4s; }
+.heart:nth-child(3) { animation-delay:.8s; }
+@keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.25)} }
+
+.certifie-label {
+  font-size:.68rem; letter-spacing:.3em; text-transform:uppercase;
+  color:rgba(60,10,80,.65); margin:1.4rem 0 .4rem;
+}
+
+.dip-titre {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.9rem,4.5vw,3rem); font-weight:300; line-height:1.15;
+  color:#2d1a40; text-shadow:none;
+}
+.dip-titre em {
+  font-style:italic;
+  background:linear-gradient(135deg,var(--gold-light),var(--fuchsia) 55%,var(--violet));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+
+.dip-corps { text-align:center; padding:1.8rem 0; }
+
+.intro-txt { font-size:.9rem; color:rgba(255,255,255,.8); font-weight:300; margin-bottom:1.8rem; }
+
+.grand-30 {
+  display:inline-block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(5rem,13vw,8rem); font-weight:300; line-height:1;
+  background:linear-gradient(135deg,var(--gold-light),#fff 40%,var(--fuchsia) 85%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:glow 3s ease-in-out infinite;
+}
+@keyframes glow {
+  0%,100%{filter:drop-shadow(0 0 12px rgba(233,30,140,.25))}
+  50%{filter:drop-shadow(0 0 30px rgba(233,30,140,.6))}
+}
+
+.sous-30 {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:1.1rem; color:rgba(255,255,255,.7); letter-spacing:.1em; margin-top:.3rem;
+}
+
+/* Statistiques */
+.stats {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:rgba(155,89,182,.3);
+  border:1px solid rgba(155,89,182,.3); border-radius:2px;
+  margin:2.2rem 0; overflow:hidden;
+}
+.stat { background:rgba(155,89,182,.15); padding:1.1rem .7rem; text-align:center; }
+.stat-n {
+  font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:400;
+  color:#6a2d8f; display:block; line-height:1;
+}
+.stat-l {
+  font-size:.62rem; letter-spacing:.15em; text-transform:uppercase;
+  color:rgba(60,10,80,.65); display:block; margin-top:.35rem;
+}
+
+/* Bloc certificat */
+.certificat {
+  background:rgba(155,89,182,.1);
+  border:1px solid rgba(155,89,182,.3);
+  border-radius:2px;
+  padding:1.5rem 2rem; margin:2rem 0; text-align:center;
+}
+.cert-label {
+  font-size:.6rem; letter-spacing:.25em; text-transform:uppercase;
+  color:rgba(60,10,80,.55); margin-bottom:.6rem;
+}
+.cert-txt {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:clamp(.95rem,2vw,1.15rem); color:#2d1a40; line-height:1.65;
+}
+.cert-txt strong { color:#6a2d8f; font-style:normal; font-weight:600; }
+
+/* Citation */
+.citation {
+  font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300;
+  font-size:clamp(1.1rem,2.5vw,1.5rem); color:#2d1a40; line-height:1.7;
+  padding:0 .8rem; margin:2rem 0 1.5rem;
+}
+.citation::before { content:'«\2009'; color:var(--fuchsia); font-style:normal; }
+.citation::after  { content:'\2009»'; color:var(--fuchsia); font-style:normal; }
+
+/* Signature */
+.signature {
+  display:flex; justify-content:space-between; align-items:flex-end;
+  flex-wrap:wrap; gap:1.2rem; margin-top:2.2rem;
+}
+.sig-line {
+  width:110px; height:1px;
+  background:linear-gradient(90deg,#9B59B6,transparent); margin-bottom:.5rem;
+}
+.sig-name {
+  font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.3rem;
+  color:#6a2d8f;
+}
+.sig-role {
+  font-size:.62rem; letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(60,10,80,.55); margin-top:.3rem;
+}
+.sig-right { text-align:right; }
+.sig-date { font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(60,10,80,.55); }
+.sig-siret { font-size:.58rem; color:rgba(60,10,80,.35); margin-top:.3rem; }
+
+/* ── SÉPARATEUR ────────────────────────── */
+.separateur {
+  position:relative; z-index:1;
+  max-width:760px; margin:3rem auto; padding:0 1.5rem;
+  text-align:center;
+}
+.sep-titre {
+  font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,3vw,1.9rem);
+  font-weight:300; color:#2d1a40; margin-bottom:.5rem;
+}
+.sep-sub { font-size:.78rem; color:rgba(60,10,80,.55); letter-spacing:.08em; }
+
+/* ── LÉGENDE ───────────────────────────── */
+.legende {
+  display:flex; flex-wrap:wrap; gap:.8rem; justify-content:center; margin:2rem 0;
+}
+.leg-item {
+  display:flex; align-items:center; gap:.4rem;
+  font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(60,10,80,.65);
+}
+.leg-dot { width:8px; height:8px; border-radius:50%; }
+
+/* ── GRILLE CARTES ─────────────────────── */
+.section-recap {
+  position:relative; z-index:1;
+  max-width:1100px; margin:0 auto; padding:0 1.5rem 5rem;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
+  gap:12px;
+}
+
+/* CARTES BLANCHES — lisibles */
+.carte {
+  background:#ffffff;
+  border-radius:3px;
+  padding:1.4rem 1.2rem;
+  position:relative;
+  transition:transform .2s ease, box-shadow .2s ease;
+  border-top:3px solid #ccc;
+}
+.carte:hover {
+  transform:translateY(-3px);
+  box-shadow:0 8px 30px rgba(0,0,0,.25);
+}
+
+/* Couleur de la bordure top selon type */
+.type-introspection { border-top-color:var(--violet); }
+.type-action        { border-top-color:var(--fuchsia); }
+.type-outil         { border-top-color:var(--turquoise); }
+.type-partage       { border-top-color:var(--gold); }
+
+.carte-header { display:flex; align-items:flex-start; gap:.7rem; margin-bottom:.8rem; }
+
+.carte-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem; font-weight:300; line-height:1; min-width:2.2rem;
+  color:#ccc;
+}
+.type-introspection .carte-num { color:rgba(155,89,182,.5); }
+.type-action .carte-num        { color:rgba(233,30,140,.45); }
+.type-outil .carte-num         { color:rgba(0,188,212,.45); }
+.type-partage .carte-num       { color:rgba(201,168,76,.6); }
+
+.carte:hover .carte-num { opacity:1; }
+.type-introspection:hover .carte-num { color:var(--violet); }
+.type-action:hover .carte-num        { color:var(--fuchsia); }
+.type-outil:hover .carte-num         { color:var(--turquoise); }
+.type-partage:hover .carte-num       { color:var(--gold); }
+
+.carte-tag {
+  display:inline-block; font-size:.56rem; letter-spacing:.18em; text-transform:uppercase;
+  padding:.22rem .55rem; border-radius:1px; font-weight:500; margin-top:.35rem;
+}
+.tag-introspection { background:rgba(155,89,182,.12); color:#7d3e9e; border:1px solid rgba(155,89,182,.3); }
+.tag-action        { background:rgba(233,30,140,.1);  color:#c01070; border:1px solid rgba(233,30,140,.25); }
+.tag-outil         { background:rgba(0,188,212,.1);   color:#007d8e; border:1px solid rgba(0,188,212,.25); }
+.tag-partage       { background:rgba(201,168,76,.12); color:#8a6800; border:1px solid rgba(201,168,76,.3); }
+
+/* TEXTE SOMBRE sur fond blanc */
+.carte-texte { font-size:.84rem; color:#2d2d2d; line-height:1.6; font-weight:400; }
+
+.carte-lien {
+  display:inline-block; margin-top:.7rem; font-size:.63rem;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:var(--turquoise); text-decoration:none; font-weight:500;
+  transition:opacity .2s;
+}
+.carte-lien:hover { opacity:.7; }
+
+/* Carte finale */
+.carte-finale {
+  background:linear-gradient(135deg,#1e0a38,#2a1055);
+  border:1px solid rgba(233,30,140,.35); border-top:3px solid var(--fuchsia);
+}
+.carte-finale .carte-texte { color:rgba(255,255,255,.88); }
+.carte-finale .carte-num   { color:var(--fuchsia) !important; }
+
+/* ── CTA SALON ─────────────────────────── */
+.cta-bloc {
+  position:relative; z-index:1; text-align:center;
+  padding:3.5rem 1.5rem 4.5rem;
+  border-top:1px solid rgba(155,89,182,.25);
+}
+.cta-label { font-size:.68rem; letter-spacing:.3em; text-transform:uppercase; color:rgba(60,10,80,.55); margin-bottom:1rem; }
+.cta-titre {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.5rem,3.5vw,2.3rem); font-weight:300;
+  color:#2d1a40; margin-bottom:.5rem;
+}
+.cta-sous { font-size:.78rem; color:rgba(60,10,80,.55); margin-bottom:1.8rem; }
+.btn-salon {
+  display:inline-block; padding:1.05rem 3rem;
+  background:linear-gradient(135deg,var(--fuchsia),var(--violet));
+  color:#fff; text-decoration:none; font-size:.78rem; letter-spacing:.22em;
+  text-transform:uppercase; font-weight:500; border-radius:2px;
+  box-shadow:0 4px 30px rgba(233,30,140,.35); transition:all .3s;
+}
+.btn-salon:hover { transform:translateY(-2px); box-shadow:0 8px 40px rgba(233,30,140,.55); }
+
+/* ── FOOTER ────────────────────────────── */
+.footer {
+  position:relative; z-index:1; text-align:center;
+  padding:1.5rem; font-size:.58rem; letter-spacing:.1em;
+  color:rgba(60,10,80,.65); border-top:1px solid rgba(155,89,182,.2);
+}
+
+@media(max-width:580px){
+  .diplome{ padding:2.5rem 1.4rem; }
+  .signature{ flex-direction:column; align-items:center; }
+  .sig-right{ text-align:center; }
+  .grid{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<!-- ═══════════════════════════════ HERO ══ -->
+<div class="hero">
+  <div class="brand">Les Cœurs Solitaires &nbsp;·&nbsp; Lili Karantez®</div>
+  <div class="gold-bar"></div>
+  <h1>30 Jours pour <em>Oser Aimer</em></h1>
+  <p class="hero-sub">Février — Avril 2026 &nbsp;·&nbsp; Bretagne &amp; Grand Ouest</p>
+</div>
+
+<!-- ═══════════════════════════ DIPLÔME ══ -->
+<div class="section-diplome">
+  <div class="diplome">
+    <div class="corner c-tl"></div>
+    <div class="corner c-tr"></div>
+    <div class="corner c-bl"></div>
+    <div class="corner c-br"></div>
+
+    <div class="dip-header">
+      <div class="dip-brand">Les Cœurs Solitaires &nbsp;·&nbsp; Lili Karantez®</div>
+      <div class="gold-bar"></div>
+      <div class="hearts">
+        <span class="heart">🤍</span>
+        <span class="heart">💗</span>
+        <span class="heart">🤍</span>
+      </div>
+      <div class="certifie-label">Diplôme de participation</div>
+      <h2 class="dip-titre">30 Jours pour <em>Oser Aimer</em></h2>
+      <div class="gold-bar" style="margin-top:1.2rem"></div>
+    </div>
+
+    <div class="dip-corps">
+      <p class="intro-txt">Tu as relevé chaque défi. Tu as avancé. Tu as osé.</p>
+      <div class="grand-30">30</div>
+      <div class="sous-30">jours de courage amoureux</div>
+
+      <div class="stats">
+        <div class="stat"><span class="stat-n">30</span><span class="stat-l">défis relevés</span></div>
+        <div class="stat"><span class="stat-n">2</span><span class="stat-l">ikigaï explorés</span></div>
+        <div class="stat"><span class="stat-n">∞</span><span class="stat-l">possibles ouverts</span></div>
+      </div>
+
+      <div class="certificat">
+        <div class="cert-label">Certifie que</div>
+        <div class="cert-txt">
+          la personne portant ce document a accompli avec engagement<br>
+          le programme <strong>«&nbsp;30 Jours pour Oser Aimer&nbsp;»</strong><br>
+          organisé par Les Cœurs Solitaires en Bretagne,<br>
+          de février à avril 2026.
+        </div>
+      </div>
+
+      <div class="gold-bar"></div>
+
+      <p class="citation">
+        Tu n'as pas cherché la perfection.<br>
+        Tu as cherché l'authenticité.<br>
+        C'est ça, oser aimer.
+      </p>
+
+      <div class="gold-bar"></div>
+    </div>
+
+    <div class="signature">
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-name">Lili Karantez®</div>
+        <div class="sig-role">Fondatrice · Les Cœurs Solitaires</div>
+      </div>
+      <div class="sig-right">
+        <div class="sig-date">Avril 2026 — Bretagne</div>
+        <div class="sig-siret">SIRET 40149331700069</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ RÉCAPITULATIF ══ -->
+<div class="separateur">
+  <div class="gold-bar"></div>
+  <h2 class="sep-titre" style="margin-top:1.2rem">Les 30 défis du programme</h2>
+  <p class="sep-sub">Retrouve ici chaque étape de ton parcours</p>
+</div>
+
+<div class="section-recap">
+  <div class="legende">
+    <div class="leg-item"><div class="leg-dot" style="background:var(--violet)"></div>Introspection</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--fuchsia)"></div>Action</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--turquoise)"></div>Outil interactif</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--gold)"></div>Partage</div>
+  </div>
+
+  <div class="grid">
+
+    <div class="carte type-introspection">
+      <div class="carte-header"><div class="carte-num">01</div><span class="carte-tag tag-introspection">Introspection</span></div>
+      <div class="carte-texte">Pourquoi as-tu envie d'aimer aujourd'hui, à ce moment précis de ta vie&nbsp;?</div>
+    </div>
+
+    <div class="carte type-introspection">
+      <div class="carte-header"><div class="carte-num">02</div><span class="carte-tag tag-introspection">Introspection</span></div>
+      <div class="carte-texte">Définir ce que signifie «&nbsp;AIMER&nbsp;» pour toi aujourd'hui.</div>
+    </div>
+
+    <div class="carte type-introspection">
+      <div class="carte-header"><div class="carte-num">03</div><span class="carte-tag tag-introspection">Introspection</span></div>
+      <div class="carte-texte">Qu'est-ce qui te manque le plus dans ta vie affective en ce moment&nbsp;?</div>
+    </div>
+
+    <div class="carte type-introspection">
+      <div class="carte-header"><div class="carte-num">04</div><span class="carte-tag tag-introspection">Introspection</span></div>
+      <div class="carte-texte">Identifier ce qui te rend concrètement indisponible à la rencontre.</div>
+    </div>
+
+    <div class="carte type-introspection">
+      <div class="carte-header"><div class="carte-num">05</div><span class="carte-tag tag-introspection">Introspection</span></div>
+      <div class="carte-texte">Formuler une intention claire et engageante pour les 25 prochains jours.</div>
+    </div>
+
+    <div class="carte type-introspection">
+      <div class="carte-header"><div class="carte-num">06</div><span class="carte-tag tag-introspection">Introspection</span></div>
+      <div class="carte-texte">Nommer 3 qualités que j'apporte dans une relation.</div>
+    </div>
+
+    <div class="carte type-introspection">
+      <div class="carte-header"><div class="carte-num">07</div><span class="carte-tag tag-introspection">Introspection</span></div>
+      <div class="carte-texte">Identifier ce qui te fait vibrer en amour. Lister 3 forces qui te rendent attirant(e).</div>
+    </div>
+
+    <div class="carte type-action">
+      <div class="carte-header"><div class="carte-num">08</div><span class="carte-tag tag-action">Action</span></div>
+      <div class="carte-texte">Imaginer et formuler son pitch pour un événement des Cœurs Solitaires.</div>
+    </div>
+
+    <div class="carte type-action">
+      <div class="carte-header"><div class="carte-num">09</div><span class="carte-tag tag-action">Action</span></div>
+      <div class="carte-texte">Créer un échange simple dans son quotidien avec un inconnu ou une inconnue.</div>
+    </div>
+
+    <div class="carte type-action">
+      <div class="carte-header"><div class="carte-num">10</div><span class="carte-tag tag-action">Action</span></div>
+      <div class="carte-texte">Rechercher quelqu'un qui attire dans le groupe des Cœurs Solitaires et lui envoyer un message. Cap ou pas cap&nbsp;?</div>
+    </div>
+
+    <div class="carte type-action">
+      <div class="carte-header"><div class="carte-num">11</div><span class="carte-tag tag-action">Action</span></div>
+      <div class="carte-texte">Aborder quelqu'un avec humour dans le groupe qui pique ta curiosité. Noter ses sensations et réactions.</div>
+    </div>
+
+    <div class="carte type-partage">
+      <div class="carte-header"><div class="carte-num">12</div><span class="carte-tag tag-partage">Partage</span></div>
+      <div class="carte-texte">Partager une expérience dans le groupe WhatsApp pour créer du lien.</div>
+    </div>
+
+    <div class="carte type-action">
+      <div class="carte-header"><div class="carte-num">13</div><span class="carte-tag tag-action">Action</span></div>
+      <div class="carte-texte">Poster une photo de soi dans le groupe avec une présentation de 70 mots.</div>
+    </div>
+
+    <div class="carte type-outil">
+      <div class="carte-header"><div class="carte-num">14</div><span class="carte-tag tag-outil">Outil</span></div>
+      <div class="carte-texte">Surprise&nbsp;: faire son test Ennéagramme et découvrir son profil amoureux.</div>
+      <a href="https://lilikarantez.github.io/les-coeurs-solitaires-5/" target="_blank" class="carte-lien">Accéder à l'outil →</a>
+    </div>
+
+    <div class="carte type-outil">
+      <div class="carte-header"><div class="carte-num">15</div><span class="carte-tag tag-outil">Outil</span></div>
+      <div class="carte-texte">Découvrir le Jeu n°1&nbsp;: L'Art de se Retrouver.</div>
+      <a href="https://lilikarantez.github.io/les-coeurs-solitaires-art-de-se-retrouver/" target="_blank" class="carte-lien">Jouer →</a>
+    </div>
+
+    <div class="carte type-introspection">
+      <div class="carte-header"><div class="carte-num">16</div><span class="carte-tag tag-introspection">Introspection</span></div>
+      <div class="carte-texte">Après deux semaines&nbsp;: quel est le bilan&nbsp;? Améliorations apportées, blocages éventuels.</div>
+    </div>
+
+    <div class="carte type-outil">
+      <div class="carte-header"><div class="carte-num">17</div><span class="carte-tag tag-outil">Outil</span></div>
+      <div class="carte-texte">Découvrir le Jeu n°2&nbsp;: L'Art de Lâcher Prise.</div>
+      <a href="https://lilikarantez.github.io/lart-de-lacher-prise/" target="_blank" class="carte-lien">Jouer →</a>
+    </div>
+
+    <div class="carte type-partage">
+      <div class="carte-header"><div class="carte-num">18</div><span class="carte-tag tag-partage">Partage</span></div>
+      <div class="carte-texte">Lancer une question simple et attractive dans le groupe WhatsApp.</div>
+    </div>
+
+    <div class="carte type-partage">
+      <div class="carte-header"><div class="carte-num">19</div><span class="carte-tag tag-partage">Partage</span></div>
+      <div class="carte-texte">Partager une anecdote personnelle avec un membre du groupe WhatsApp.</div>
+    </div>
+
+    <div class="carte type-outil">
+      <div class="carte-header"><div class="carte-num">20</div><span class="carte-tag tag-outil">Outil</span></div>
+      <div class="carte-texte">Faire le bilan de sa vie sur les applis de rencontres&nbsp;: heures perdues, conversations disparues, foi restante.</div>
+      <a href="https://lilikarantez.github.io/quizz-appli-1/" target="_blank" class="carte-lien">Accéder au quiz →</a>
+    </div>
+
+    <div class="carte type-outil">
+      <div class="carte-header"><div class="carte-num">21</div><span class="carte-tag tag-outil">Outil</span></div>
+      <div class="carte-texte">Mesurer son baromètre du désir en ce moment.</div>
+      <a href="https://lilikarantez.github.io/barometre-desir-/" target="_blank" class="carte-lien">Accéder →</a>
+    </div>
+
+    <div class="carte type-action">
+      <div class="carte-header"><div class="carte-num">22</div><span class="carte-tag tag-action">Action</span></div>
+      <div class="carte-texte">Choisir une belle tenue pour son prochain rendez-vous galant. Le printemps est là.</div>
+    </div>
+
+    <div class="carte type-partage">
+      <div class="carte-header"><div class="carte-num">23</div><span class="carte-tag tag-partage">Partage</span></div>
+      <div class="carte-texte">Lancer une question attractive dans le groupe WhatsApp ou dans le groupe Facebook des Cœurs Solitaires.</div>
+    </div>
+
+    <div class="carte type-outil">
+      <div class="carte-header"><div class="carte-num">24</div><span class="carte-tag tag-outil">Outil</span></div>
+      <div class="carte-texte">Créer son Ikigaï Amoureux.</div>
+      <a href="https://lilikarantez.github.io/ikigai-amoureux-/" target="_blank" class="carte-lien">Accéder →</a>
+    </div>
+
+    <div class="carte type-outil">
+      <div class="carte-header"><div class="carte-num">25</div><span class="carte-tag tag-outil">Outil</span></div>
+      <div class="carte-texte">Explorer l'Ikigaï Intime.</div>
+      <a href="https://lilikarantez.github.io/ikigai-intime/" target="_blank" class="carte-lien">Accéder →</a>
+    </div>
+
+    <div class="carte type-introspection">
+      <div class="carte-header"><div class="carte-num">26</div><span class="carte-tag tag-introspection">Introspection</span></div>
+      <div class="carte-texte">Noter ce qui réjouit et ce qui met mal à l'aise depuis le début du programme. Quelles conclusions&nbsp;?</div>
+    </div>
+
+    <div class="carte type-action">
+      <div class="carte-header"><div class="carte-num">27</div><span class="carte-tag tag-action">Action</span></div>
+      <div class="carte-texte">Écrire un message amical et positif à un membre des Cœurs Solitaires sur Facebook qui pique ta curiosité.</div>
+    </div>
+
+    <div class="carte type-outil">
+      <div class="carte-header"><div class="carte-num">28</div><span class="carte-tag tag-outil">Outil</span></div>
+      <div class="carte-texte">Retour au baromètre du désir&nbsp;: qu'est-ce qui a changé depuis le jour 21&nbsp;?</div>
+      <a href="https://lilikarantez.github.io/barometre-desir-/" target="_blank" class="carte-lien">Accéder →</a>
+    </div>
+
+    <div class="carte type-introspection">
+      <div class="carte-header"><div class="carte-num">29</div><span class="carte-tag tag-introspection">Introspection</span></div>
+      <div class="carte-texte">Lister ses réussites, ses échecs aussi. Qu'est-ce que ce défi t'a appris sur toi&nbsp;?</div>
+    </div>
+
+    <div class="carte type-action carte-finale">
+      <div class="carte-header"><div class="carte-num">30</div><span class="carte-tag tag-action">Conclusion</span></div>
+      <div class="carte-texte">
+        Tu es entré(e) dans ce défi avec une question.<br>
+        Tu en sors avec quelque chose de plus précieux&nbsp;: une réponse qui t'appartient.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════ CTA SALON ══ -->
+<div class="cta-bloc">
+  <div class="cta-label">La prochaine étape t'attend</div>
+  <div class="cta-titre">Salon de la Rencontre Célibataire<br>Vannes &nbsp;·&nbsp; 6 juin 2026</div>
+  <a href="https://ypl.me/PUR" target="_blank" class="btn-salon">Je réserve ma place</a>
+</div>
+
+<div class="footer">
+  © 2026 Lili Karantez — Toute reproduction interdite, même partielle
+  &nbsp;·&nbsp; SIRET 40149331700069 &nbsp;·&nbsp; lilikarantez@gmail.com
+</div>
+
+<script>
+const s = document.getElementById('stars');
+for(let i=0;i<65;i++){
+  const el=document.createElement('div');
+  el.className='star';
+  const sz=.8+Math.random()*1.8;
+  el.style.cssText=[
+    'left:'+Math.random()*100+'%',
+    'top:'+Math.random()*100+'%',
+    'width:'+sz+'px','height:'+sz+'px',
+    '--d:'+(2+Math.random()*4)+'s',
+    '--dl:-'+Math.random()*5+'s',
+    '--op:'+(0.2+Math.random()*0.55)
+  ].join(';');
+  s.appendChild(el);
+}
+</script>
+</body>
+</html>
